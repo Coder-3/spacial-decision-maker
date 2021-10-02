@@ -12,6 +12,8 @@ const GlobalStyle = createGlobalStyle`
     max-width: 50em;
     line-height: 1.5;
     padding: 4em 1em;
+    display: flex;
+    justify-content: center;
   }
 
   h1, h2, strong {
