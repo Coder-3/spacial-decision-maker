@@ -7,7 +7,6 @@ import PointsTable from './components/PointsTable'
 import calculateEuclideanDistance from './services/euclideanDistance'
 
 const Canvas = ({ coordinates }) => {
-  console.log(coordinates)
   return (
     <ReactRough renderer="svg" width={320} height={320}>
       <Line x1={0} x2={320} y1={20} y2={20} stroke="grey" strokeWidth={0.3} />
