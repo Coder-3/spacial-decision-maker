@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import GlobalStyle from './global.styled'
-import ReactRough, { Rectangle, Circle, Line } from 'react-rough';
+import ReactRough, { Circle, Line } from 'react-rough';
+import NewDecision from './components/NewDecision';
 import Decision from './components/Decision'
 import DecisionValues from './components/DecisionValues'
 import PointsTable from './components/PointsTable'
@@ -85,18 +86,8 @@ function App() {
     <div className="App">
       <GlobalStyle />
       <Canvas coordinates={[{ x: 120, y: 60 }, { x: 50, y: 200 }]} />
-      <h2>{!dimensionNames ? null : dimensionNames.name}</h2>
-      <div>
-        <PointsTable dimensionNames={dimensionNames} dimensionValues={dimensionValues} />
-      </div>
-      {!dimensionNames ?
-        <div>
-          <Decision numberOfDimensions={numberOfDimensions} submitDecision={submitDecision} pointName={pointName} setPointName={setPointName} />
-          <button onClick={() => setNumberOfDimensions(numberOfDimensions + 1)}>add dimension</button>
-        </div>
-      :
-        <DecisionValues numberOfDimensions={numberOfDimensions} dimensionNames={dimensionNames} submitDecisionValues={submitDecisionValues} />
-      }
+      <NewDecision />
+      
     </div>
   )
 }
