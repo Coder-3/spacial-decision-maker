@@ -48,37 +48,18 @@ const Canvas = ({ coordinates }) => {
 }
 
 function App() {
-  const [dimensionNames, setDimensionNames] = useState(null)
-  const [numberOfDimensions, setNumberOfDimensions] = useState(1)
-  const [pointName, setPointName] = useState('')
-  const [dimensionValues, setDimensionValues] = useState([])
+  const [decisionName, setDecisionName] = useState(null)
+  const [variables, setVariables] = useState([])
 
-  const submitDecision = event => {
+  const submitNewDecision = event => {
     event.preventDefault()
 
-    const dimensions = []
+    setDecisionName(event.target[0].value)
 
-    for(let i = 0; i < event.target.length - 1; i++) {
-      dimensions.push(event.target[i].value)
-    }
-
-    setDimensionNames({ name: pointName, dimensions })
-
-    setPointName('')
-  }
-
-  const submitDecisionValues = event => {
-    event.preventDefault()
-
-    const values = []
-
-    for(let i = 0; i < event.target.length - 1; i++) {
-      values.push(event.target[i].value)
-    }
-
-    setDimensionValues(dimensionValues.concat([values]))
-    if (dimensionValues.length > 1) {
-      calculateEuclideanDistance(dimensionValues)
+    for(let i = 1; i < event.target.length; i++) {
+      if (event.target[i].value) {
+        setVariables(variables.concat(event.target[i].value))
+      }
     }
   }
 
@@ -86,8 +67,7 @@ function App() {
     <div className="App">
       <GlobalStyle />
       <Canvas coordinates={[{ x: 120, y: 60 }, { x: 50, y: 200 }]} />
-      <NewDecision />
-      
+      <NewDecision submitNewDecision={submitNewDecision} />
     </div>
   )
 }

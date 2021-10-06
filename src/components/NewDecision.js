@@ -10,17 +10,12 @@ const SubmitButton = styled.button`
   border: 2px solid dimgray;
 `
 
-const NewDecision = () => {
-  const [numberOfVariables, setNumberOfVariables] = useState(2)
+const NewDecision = ({ submitNewDecision }) => {
+  const [numberOfVariables, setNumberOfVariables] = useState(1)
   const [inputValues, setInputValues] = useState([])
 
-  const handleSubmit = event => {
-    event.preventDefault()
-
-  }
-
   const handleVariableChange = (value, i) => {
-    if (!inputValues[i]) {
+    if (inputValues[i] === undefined) {
       setInputValues([...inputValues, value])
     } else {
       setInputValues(inputValues.map((val, idx) => idx === i ? value : val))
@@ -29,7 +24,7 @@ const NewDecision = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={submitNewDecision}>
         <p>What are you decising about?</p>
         decision name
         <input type="text" />
